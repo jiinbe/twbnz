@@ -133,6 +133,12 @@ document.getElementById('avatar_template').src = 'img/head' + current + '.png';
 document.getElementById('avatar_template').alt = current;
 loadImage();
 }
+
+const result = document.getElementById('result');
+imgurl.addEventListener('change', e => {
+console.log('Changed');
+result.innerText = 'Success!';
+});
 </script>
 </body>
 </html>
