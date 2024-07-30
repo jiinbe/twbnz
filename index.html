@@ -71,6 +71,68 @@ width: auto;
 <button id="download">SAVE IMAGE</button>
 </p>
 </main>
-<script src="app.js"></script>
+<!--<script src="app.js"></script>-->
+<script>
+function loadImage() {
+// 载入图片生成 blob 链接
+var imgUrl = window.URL.createObjectURL(document.getElementById('upload').files[0]);
+document.getElementById('avatar_img').src = imgUrl;
+drawImage(imgUrl, document.getElementById('avatar_template').src)
+}   
+            
+function drawImage(img, frame) {
+var cvs = document.getElementById('cvs');
+var size = 300;
+cvs.width = size;
+cvs.height = size;
+var ctx = cvs.getContext('2d');
+var image = new Image;
+image.src = img;
+image.onload = function() {
+ctx.drawImage(image, 0, 0, size, size);
+image = new Image;
+image.src = frame;
+image.onload = function() {
+ctx.drawImage(image, 0, 0, size, size);
+                        
+}
+}
+}
+
+function downloadImage() {
+var canvas = document.getElementById('cvs');
+
+// 导出图片 DataURL
+var image = canvas.toDataURL("image/png")
+
+// 创建一个 a 标签，设置 download 属性，点击时下载文件
+var save_link = document.createElement('a');
+save_link.href = image;
+save_link.download ='avatar.png';
+                
+// 创建 click 模拟事件
+var clickevent = document.createEvent('MouseEvents');
+clickevent.initEvent('click', true, false);
+// 触发点击事件
+save_link.dispatchEvent(clickevent);
+
+}
+
+function prevTemplate() {
+var current = parseInt(document.getElementById('avatar_template').alt);
+current = (current - 1 + 4) % 4;
+document.getElementById('avatar_template').src = 'img/head' + current + '.png';
+document.getElementById('avatar_template').alt = current;
+loadImage();
+}
+
+function nextTemplate() {
+var current = parseInt(document.getElementById('avatar_template').alt);
+current = (current + 1) % 4;
+document.getElementById('avatar_template').src = 'img/head' + current + '.png';
+document.getElementById('avatar_template').alt = current;
+loadImage();
+}
+</script>
 </body>
 </html>
