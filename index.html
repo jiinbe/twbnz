@@ -135,13 +135,13 @@ document.getElementById('avatar_template').alt = current;
 loadImage();
 }
 
-var result = document.getElementById('result');
+var output = document.getElementById('result');
 imgurl.addEventListener('click', e => {
 console.log('Clicked');
 });
 imgurl.addEventListener('change', e => {
 console.log('Changed');
-result.innerText = 'Success!';
+output.innerText = 'Success!';
 });
 </script>
 </body>
