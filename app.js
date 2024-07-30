@@ -65,3 +65,8 @@ function drawToCanvas(img1, img2){
     
     }
 }
+
+$('#avatar_template').on('change', function(e){
+  
+uploadFrame(e);
+});
