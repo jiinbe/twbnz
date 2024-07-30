@@ -136,6 +136,9 @@ loadImage();
 }
 
 const result = document.getElementById('result');
+imgurl.addEventListener('click', e => {
+console.log('Clicked');
+});
 imgurl.addEventListener('change', e => {
 console.log('Changed');
 result.innerText = 'Success!';
