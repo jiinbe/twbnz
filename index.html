@@ -82,11 +82,11 @@ var img1 = document.getElementById('avatar');
 var img2 = document.getElementById('frame');
 var canvas = document.getElementById("cvs");
 var context = canvas.getContext("2d");
-var width = img2.width;
-var height = img2.height;
+var width = 500;
+var height = 500;
 
-canvas.width = 500;
-canvas.height = 500;
+canvas.width = width;
+canvas.height = height;
   
 // Fungsi untuk men-draw gambar
 context.drawImage(img1, 0, 1, width, height);
