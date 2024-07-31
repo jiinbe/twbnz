@@ -87,6 +87,14 @@ var context = canvas.getContext("2d");
 // canvas.width = width;
 // canvas.height = height;
 
+pixelRatio = window.devicePixelRatio,
+w = img2.width,
+h = img2.height;
+
+canvas.width = w * pixelRatio
+canvas.height = h * pixelRatio
+canvas.style.width = w + 'px';
+
 // Fungsi untuk men-draw gambar
 // context.drawImage(img1, 0, 1, width, height);
 // var image1 = context.getImageData(0, 0, width, height);
@@ -95,23 +103,6 @@ var context = canvas.getContext("2d");
 // var image2 = context.getImageData(0, 0, width, height);
 // var imageData2 = image2.data;
 // };
-
-pixelRatio = window.devicePixelRatio,
-w = img2.width,
-h = img2.height;
-
-canvas.width = w * pixelRatio
-canvas.height = h * pixelRatio
-
-context.drawImage (
-canvas.width / 2,
-canvas.height / 2,
-canvas.width / 2,
-0,
-Math.PI * 2
-)
-context.fill();
-canvas.style.width = w + 'px';
   
 function canvasToPng() {
 const canvas = document.getElementById('cvs');
