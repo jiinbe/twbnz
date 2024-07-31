@@ -96,38 +96,22 @@ var context = canvas.getContext("2d");
 // var imageData2 = image2.data;
 // };
 
-input.addEventListener('change', drawImageFromInput);
+pixelRatio = window.devicePixelRatio,
+w = canvas.width,
+h = canvas.height;
 
-function drawImageFromInput(callback) {
-context.clearRect(0, 0, 500, 500);
+canvas.width = w * pixelRatio
+canvas.height = h * pixelRatio
 
-if (input.files.length === 0) {
-context.drawImage(ph, 0, 0, 500, 500);
-if (typeof callback === 'function') callback();
-} else {
-const img = new Image();
-img.addEventListener('load', function () {
-size = Math.min(img.height, img.width);
-x1 = 0;
-y1 = 0;
-if (img.height < img.width) {
-//breit
-x1 = img.width / 2 - size / 2;
-} else if (img.height > img.width) {
-//hoch
-y1 = img.height / 2 - size / 2;
-}
-context.drawImage(img, x1, y1, size, size, 0, 0, 500, 500);
-for (var optionImage of document.querySelectorAll('.frame-option img')) {
-optionImage.style.backgroundImage = `url("${img.src}")`;
-}
-
-if (typeof callback === 'function') callback();
-});
-img.src = URL.createObjectURL(input.files[0]);
-}
-}
-
+context.arc (
+canvas.width / 2,
+canvas.height / 2,
+canvas.width / 2,
+0,
+Math.PI * 2
+)
+context.fill();
+canvas.style.width = w + 'px';
   
 function canvasToPng() {
 const canvas = document.getElementById('cvs');
