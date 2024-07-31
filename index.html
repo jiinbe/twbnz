@@ -29,24 +29,6 @@ img, canvas {
 width: 100%;
 height: auto;
 }
-#app {
-width: 100%;
-height: 300px;
-position: relative;
-margin: auto;
-overflow: hidden;
-}           
-#avatar img {
-width: 100%;
-}
-#frame {
-position: absolute;
-top: 0;
-right: 0;
-}
-.hide {
-display: none;
-}
 @media (max-width: 700px) {
 main {
 margin: 0 auto;
@@ -59,55 +41,14 @@ width: auto;
 <body>
 <main>
 <h1>Example Domain</h1>
-<p>
-<input type="file" name="" id="upload" accept="image/*" onchange="loadImage()">
-</p>
-<p id="app">
-<img src="fabric.png" alt="frame" id="frame">
-<img src="" alt="" id="avatar">
-</p>
-<p><canvas id="cvs" style="display:none;"></canvas></p>
-<p>
-<button id="download" onclick="downloadImage()">SAVE IMAGE</button>
+<p>Avatar: <input type="file" accept="image/*" onchange="loadFile(event)"></p>
+<p>Frame: <input type='file' accept="image/*" onchange="loadTemplate(event)"></p>
+<p><img src="avatar.png" id="avatar" hidden="true">
+<img src="frame.png" id="frame" hidden="true"></p>
+<p><canvas id="cvs"></canvas></p>
+<p><button onclick="gen()">Generate</button>
+<button onclick="canvasToPng()">Download</button>
 </p>
 </main>
-<!--<script src="app.js"></script>-->
-<script>
-function loadImage() {
-var imgUrl = window.URL.createObjectURL(document.getElementById('upload').files[0]);
-document.getElementById('avatar').src = imgUrl;
-drawImage(imgUrl, document.getElementById('frame').src)
-}   
-            
-function drawImage(img, frame) {
-var canvas = document.getElementById('cvs');
-var size = 300;
-canvas.width = size;
-canvas.height = size;
-            
-var ctx = ctx.getContext('2d');
-var image = new Image;
-image.src = img;
-image.onload = function() {
-ctx.drawImage(image, 0, 0, size, size);
-image = new Image;
-image.src = frame;
-image.onload = function() {
-ctx.drawImage(image, 0, 0, size, size);                        
-}
-}
-}
-
-function downloadImage() {
-var canvas = document.getElementById('cvs');
-var image = canvas.toDataURL("image/png")
-var save_link = document.createElement('a');
-save_link.href = image;
-save_link.download ='avatar.png';
-var clickevent = document.createEvent('MouseEvents');
-clickevent.initEvent('click', true, false);
-save_link.dispatchEvent(clickevent);
-}
-</script>
 </body>
 </html>
