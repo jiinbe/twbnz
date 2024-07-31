@@ -119,21 +119,21 @@ save_link.dispatchEvent(clickevent);
 
 }
 
-function prevTemplate() {
-var current = parseInt(document.getElementById('avatar_template').alt);
-current = (current - 1 + 4) % 4;
-document.getElementById('avatar_template').src = 'img/head' + current + '.png';
-document.getElementById('avatar_template').alt = current;
-loadImage();
-}
+// function prevTemplate() {
+// var current = parseInt(document.getElementById('avatar_template').alt);
+// current = (current - 1 + 4) % 4;
+// document.getElementById('avatar_template').src = 'img/head' + current + '.png';
+// document.getElementById('avatar_template').alt = current;
+// loadImage();
+// }
 
-function nextTemplate() {
-var current = parseInt(document.getElementById('avatar_template').alt);
-current = (current + 1) % 4;
-document.getElementById('avatar_template').src = 'img/head' + current + '.png';
-document.getElementById('avatar_template').alt = current;
-loadImage();
-}
+// function nextTemplate() {
+// var current = parseInt(document.getElementById('avatar_template').alt);
+// current = (current + 1) % 4;
+// document.getElementById('avatar_template').src = 'img/head' + current + '.png';
+// document.getElementById('avatar_template').alt = current;
+// loadImage();
+// }
 
 var output = document.getElementById('result');
 imgurl.addEventListener('click', e => {
