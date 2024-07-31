@@ -88,7 +88,7 @@ var canvas = document.getElementById('cvs');
 canvas.width = 1080;
 canvas.height = 1080;
             
-var ctx = canvas.getContext('2d');
+var ctx = ctx.getContext('2d');
 var image = new Image;
 image.src = img;
 image.onload = function() {
@@ -96,7 +96,7 @@ ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 image = new Image;
 image.src = frame;
 image.onload = function() {
-ctx.drawImage(frame, 0, 0, canvas.width, canvas.height);                        
+ctx.drawImage(image, 0, 0, canvas.width, canvas.height);                        
 }
 }
 }
