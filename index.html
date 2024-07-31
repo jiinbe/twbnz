@@ -82,35 +82,20 @@ var img1 = document.getElementById('avatar');
 var img2 = document.getElementById('frame');
 var canvas = document.getElementById("cvs");
 var context = canvas.getContext("2d");
-// var width = img2.width;
-// var height = img2.height;
-// canvas.width = width;
-// canvas.height = height;
+var width = img2.width;
+var height = img2.height;
 
-pixelRatio = window.devicePixelRatio,
-w = img2.width,
-h = img2.height;
-
-canvas.width = w * pixelRatio
-canvas.height = h * pixelRatio
-canvas.style.width = w + 'px';
-
-context.drawImage(img1, 0, 1, w, h);
-var image1 = context.getImageData(0, 0, w, h);
-var imageData1 = image1.data;
-context.drawImage(img2, 0, 0, w, h);
-var image2 = context.getImageData(0, 0, w, h);
-var imageData2 = image2.data;
-};
+canvas.width = 500;
+canvas.height = 500;
   
 // Fungsi untuk men-draw gambar
-// context.drawImage(img1, 0, 1, width, height);
-// var image1 = context.getImageData(0, 0, width, height);
-// var imageData1 = image1.data;
-// context.drawImage(img2, 0, 0, width, height);
-// var image2 = context.getImageData(0, 0, width, height);
-// var imageData2 = image2.data;
-// };
+context.drawImage(img1, 0, 1, width, height);
+var image1 = context.getImageData(0, 0, width, height);
+var imageData1 = image1.data;
+context.drawImage(img2, 0, 0, width, height);
+var image2 = context.getImageData(0, 0, width, height);
+var imageData2 = image2.data;
+};
   
 function canvasToPng() {
 const canvas = document.getElementById('cvs');
