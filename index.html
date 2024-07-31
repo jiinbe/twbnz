@@ -82,20 +82,53 @@ var img1 = document.getElementById('avatar');
 var img2 = document.getElementById('frame');
 var canvas = document.getElementById("cvs");
 var context = canvas.getContext("2d");
-var width = img2.width;
-var height = img2.height;
-canvas.width = width;
-canvas.height = height;
+// var width = img2.width;
+// var height = img2.height;
+// canvas.width = width;
+// canvas.height = height;
 
 // Fungsi untuk men-draw gambar
-context.drawImage(img1, 0, 1, width, height);
-var image1 = context.getImageData(0, 0, width, height);
-var imageData1 = image1.data;
-context.drawImage(img2, 0, 0, width, height);
-var image2 = context.getImageData(0, 0, width, height);
-var imageData2 = image2.data;
-};
+// context.drawImage(img1, 0, 1, width, height);
+// var image1 = context.getImageData(0, 0, width, height);
+// var imageData1 = image1.data;
+// context.drawImage(img2, 0, 0, width, height);
+// var image2 = context.getImageData(0, 0, width, height);
+// var imageData2 = image2.data;
+// };
 
+input.addEventListener('change', drawImageFromInput);
+
+function drawImageFromInput(callback) {
+context.clearRect(0, 0, 500, 500);
+
+if (input.files.length === 0) {
+context.drawImage(ph, 0, 0, 500, 500);
+if (typeof callback === 'function') callback();
+} else {
+const img = new Image();
+img.addEventListener('load', function () {
+size = Math.min(img.height, img.width);
+x1 = 0;
+y1 = 0;
+if (img.height < img.width) {
+//breit
+x1 = img.width / 2 - size / 2;
+} else if (img.height > img.width) {
+//hoch
+y1 = img.height / 2 - size / 2;
+}
+context.drawImage(img, x1, y1, size, size, 0, 0, 500, 500);
+for (var optionImage of document.querySelectorAll('.frame-option img')) {
+optionImage.style.backgroundImage = `url("${img.src}")`;
+}
+
+if (typeof callback === 'function') callback();
+});
+img.src = URL.createObjectURL(input.files[0]);
+}
+}
+
+  
 function canvasToPng() {
 const canvas = document.getElementById('cvs');
 canvas.toBlob((blob) => {
