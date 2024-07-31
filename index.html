@@ -95,6 +95,14 @@ canvas.width = w * pixelRatio
 canvas.height = h * pixelRatio
 canvas.style.width = w + 'px';
 
+context.drawImage(img1, 0, 1, w, h);
+var image1 = context.getImageData(0, 0, w, h);
+var imageData1 = image1.data;
+context.drawImage(img2, 0, 0, w, h);
+var image2 = context.getImageData(0, 0, w, h);
+var imageData2 = image2.data;
+};
+  
 // Fungsi untuk men-draw gambar
 // context.drawImage(img1, 0, 1, width, height);
 // var image1 = context.getImageData(0, 0, width, height);
