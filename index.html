@@ -143,21 +143,6 @@ imgurl.addEventListener('change', e => {
 console.log('Changed');
 output.innerText = 'Success!';
 });
-
-var mouseDown = false;
-
-// for mousedown
-cvs.onmousedown = function(event){
-   dragOffset.x = event.x - mainLayer.trans.x;
-   dragOffset.y = event.y - mainLayer.trans.y;
-   mouseDown = true;
-}
-
-// for mouseup
-cvs.onmouseup = function(event){
-   if(mouseDown) mouseClick(eevent
-   mouseDown = false;
-}
 </script>
 </body>
 </html>
