@@ -81,19 +81,23 @@ drawImage(imgUrl, document.getElementById('avatar_template').src)
 }   
             
 function drawImage(img, frame) {
-var cvs = document.getElementById('cvs');
-var size = 300;
-cvs.width = size;
-cvs.height = size;
+var canvas = document.getElementById('cvs');
+// var size = 300;
+// cvs.width = size;
+// cvs.height = size;
+            
+canvas.width = 1080;
+canvas.height = 1080;
+            
 var ctx = cvs.getContext('2d');
 var image = new Image;
 image.src = img;
 image.onload = function() {
-ctx.drawImage(image, 0, 0, size, size);
+ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 image = new Image;
 image.src = frame;
 image.onload = function() {
-ctx.drawImage(image, 0, 0, size, size);                        
+ctx.drawImage(image, 0, 0, canvas.width, canvas.height);                        
 }
 }
 }
@@ -108,15 +112,6 @@ var clickevent = document.createEvent('MouseEvents');
 clickevent.initEvent('click', true, false);
 save_link.dispatchEvent(clickevent);
 }
-
-var output = document.getElementById('result');
-imgurl.addEventListener('click', e => {
-console.log('Clicked');
-});
-imgurl.addEventListener('change', e => {
-console.log('Changed');
-output.innerText = 'Success!';
-});
 </script>
 </body>
 </html>
