@@ -29,9 +29,9 @@ img, canvas {
 width: 100%;
 height: auto;
 }
-#avatar {
+#app {
 width: 100%;
-height: 531px;
+height: 100%;
 position: relative;
 margin: auto;
 overflow: hidden;
@@ -39,7 +39,7 @@ overflow: hidden;
 #avatar img {
 width: 100%;
 }
-#avatar_template {
+#frame {
 position: absolute;
 top: 0;
 right: 0;
@@ -62,9 +62,9 @@ width: auto;
 <p>
 <input type="file" name="" id="upload" accept="image/*" onchange="loadImage()">
 </p>
-<p id="avatar">
-<img src="fabric.png" alt="frame" id="avatar_template">
-<img src="" alt="" id="avatar_img">
+<p id="app">
+<img src="fabric.png" alt="frame" id="frame">
+<img src="" alt="" id="avatar">
 </p>
 <p><canvas id="cvs" style="display:none;"></canvas></p>
 <p>
@@ -75,8 +75,8 @@ width: auto;
 <script>
 function loadImage() {
 var imgUrl = window.URL.createObjectURL(document.getElementById('upload').files[0]);
-document.getElementById('avatar_img').src = imgUrl;
-drawImage(imgUrl, document.getElementById('avatar_template').src)
+document.getElementById('avatar').src = imgUrl;
+drawImage(imgUrl, document.getElementById('frame').src)
 }   
             
 function drawImage(img, frame) {
@@ -88,7 +88,7 @@ var canvas = document.getElementById('cvs');
 canvas.width = 1080;
 canvas.height = 1080;
             
-var ctx = cvs.getContext('2d');
+var ctx = canvas.getContext('2d');
 var image = new Image;
 image.src = img;
 image.onload = function() {
