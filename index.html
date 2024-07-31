@@ -97,13 +97,13 @@ var context = canvas.getContext("2d");
 // };
 
 pixelRatio = window.devicePixelRatio,
-w = canvas.width,
-h = canvas.height;
+w = img2.width,
+h = img2.height;
 
 canvas.width = w * pixelRatio
 canvas.height = h * pixelRatio
 
-context.arc (
+context.drawImage (
 canvas.width / 2,
 canvas.height / 2,
 canvas.width / 2,
