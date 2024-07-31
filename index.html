@@ -88,13 +88,14 @@ var img1 = document.getElementById('avatar');
 var img2 = document.getElementById('frame');
 var canvas = document.getElementById("cvs");
 var context = canvas.getContext("2d");
+context.font = '21px serif';
+context.fillText('Hello world', 40, 100);
+
 var width = 525;
 var height = 531;
 
 canvas.width = width;
 canvas.height = height;
-context.font = '21px serif';
-context.fillText('Hello world', 40, 100);
 
 // Fungsi untuk men-draw gambar
 context.drawImage(img1, 0, 1, width, height);
