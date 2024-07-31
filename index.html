@@ -55,8 +55,7 @@ width: auto;
 <img src="frame.png" id="frame" hidden="true"></p>
 <p><canvas id="cvs"></canvas></p>
 <p><button onclick="gen()">Generate</button>
-<!--<button onclick="canvasToPng()">Download</button>-->
-<button id="save">Download</button>
+<button onclick="canvasToPng()">Download</button>
 </p>
 </main>
 <script>
@@ -78,7 +77,6 @@ URL.revokeObjectURL(output.src)
 
 
 function gen() {
-
 // Mensetting Variabel
 var img1 = document.getElementById('avatar');
 var img2 = document.getElementById('frame');
@@ -98,44 +96,14 @@ var image2 = context.getImageData(0, 0, width, height);
 var imageData2 = image2.data;
 };
 
-// function canvasToPng() {
-// const canvas = document.getElementById('cvs');
-// canvas.toBlob((blob) => {
-// const link = document.createElement("a");
-// link.href = URL.createObjectURL(blob);
-// link.download = "avatar.png";
-// link.click();
-// })
-// };
-
-function download(canvas, filename) {
-/// create an "off-screen" anchor tag
-var lnk = document.createElement('a'), e;
-
-/// the key here is to set the download attribute of the a tag
-lnk.download = filename;
-
-/// convert canvas content to data-uri for link. When download
-/// attribute is set the content pointed to by link will be
-/// pushed as "download" in HTML5 capable browsers
-lnk.href = canvas.toDataURL("image/png;base64");
-
-/// create a "fake" click-event to trigger the download
-if (document.createEvent) {
-e = document.createEvent("MouseEvents");
-e.initMouseEvent("click", true, true, window,
-0, 0, 0, 0, 0, false, false, false,
-false, 0, null);
-
-lnk.dispatchEvent(e);
-} else if (lnk.fireEvent) {
-lnk.fireEvent("onclick");
-}
-}
-
-var dwn = document.getElementById('save');
-dwn.onclick = function(){
-download(canvas, 'image.png');
+function canvasToPng() {
+const canvas = document.getElementById('cvs');
+canvas.toBlob((blob) => {
+const link = document.createElement("a");
+link.href = URL.createObjectURL(blob);
+link.download = "image.png";
+link.click();
+})
 };
 </script>
 </body>
