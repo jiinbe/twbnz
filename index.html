@@ -62,7 +62,7 @@ width: auto;
 <img src="frame.png" id="frame" hidden="true"></p>
 <p><canvas width="525" height="531" id="cvs"></canvas></p>
 <p><button onclick="gen()">Generate</button>
-<button onclick="dlToPng()">Download</button>
+<button id="dl" onclick="dlToPng()">Download</button>
 </p>
 </main>
 <script>
@@ -82,7 +82,15 @@ URL.revokeObjectURL(output.src)
 }
 };
 
-
+$('#dl').bind("click",function() { 
+var imgVal = $('#avatar').val(); 
+if(imgVal=='') { 
+alert("empty input file"); 
+} else {
+alert('file fill in');
+}
+}); 
+  
 function gen() {
 // Mensetting Variabel
 var img1 = document.getElementById('avatar');
