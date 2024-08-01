@@ -55,14 +55,14 @@ width: auto;
 <body>
 <main>
 <h1>Example Domain</h1>
-<p>Avatar: <input type="file" id="finput" accept="image/*" onchange="loadFile(event)"></p>
+<p>Avatar: <input type="file" accept="image/*" onchange="loadFile(event)"></p>
 <p>Frame: <input type='file' accept="image/*" onchange="loadTemplate(event)"></p>
   
 <p><img src="avatar.png" id="avatar" hidden="true">
 <img src="frame.png" id="frame" hidden="true"></p>
 <p><canvas width="525" height="531" id="cvs"></canvas></p>
 <p><button onclick="gen()">Generate</button>
-<button id="dl" onclick="dlToPng()">Download</button>
+<button onclick="dlToPng()">Download</button>
 </p>
 </main>
 <script>
@@ -81,15 +81,6 @@ output.onload = function() {
 URL.revokeObjectURL(output.src)
 }
 };
-
-$('#dl').bind("click",function() { 
-var imgVal = $('#finput').val(); 
-if(imgVal=='') { 
-alert("empty input file"); 
-} else {
-alert('file fill in');
-}
-}); 
   
 function gen() {
 // Mensetting Variabel
