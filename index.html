@@ -62,7 +62,7 @@ width: auto;
 <img src="frame.png" id="frame" hidden="true"></p>
 <p><canvas width="525" height="531" id="cvs"></canvas></p>
 <p><button onclick="gen()">Generate</button>
-<button onclick="canvasToPng()">Download</button>
+<button onclick="dlToPng()">Download</button>
 </p>
 </main>
 <script>
@@ -105,7 +105,7 @@ var image2 = context.getImageData(0, 0, width, height);
 var imageData2 = image2.data;
 };
   
-function canvasToPng() {
+function dlToPng() {
 const canvas = document.getElementById('cvs');
 canvas.toBlob((blob) => {
 const link = document.createElement("a");
